@@ -105,7 +105,7 @@ public class CompanyController {
             validateCompany(company);
             company.setId(id);
             companyService.updateCompany(company);
-            return new ResponseEntity<>("Company is updated succesfully", HttpStatus.OK);
+            return new ResponseEntity<>("Company is updated successfully", HttpStatus.OK);
         }else{
             throw new ValidationException("Error al actualizar el company");
         }
