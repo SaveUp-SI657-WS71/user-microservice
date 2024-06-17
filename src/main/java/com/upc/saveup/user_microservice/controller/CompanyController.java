@@ -80,6 +80,15 @@ public class CompanyController {
         }
     }
 
+    //EndPoint: localhost:8080/api/saveup/v1/products/{id}
+    //Method: GET
+    @Transactional(readOnly = true)
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/companies/{id}")
+    public ResponseEntity<Company> getCompany(@PathVariable("id") int id){
+        return new ResponseEntity<Company>(companyService.getCompany(id), HttpStatus.OK);
+    }
+
     //EndPoint: localhost:8080/api/saveup/v1/companies
     //Method: POST
     @Transactional
