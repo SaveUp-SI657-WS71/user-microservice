@@ -2,6 +2,7 @@ package com.upc.saveup.user_microservice.controller;
 
 import com.upc.saveup.user_microservice.exception.ResourceNotFoundException;
 import com.upc.saveup.user_microservice.exception.ValidationException;
+import com.upc.saveup.user_microservice.model.Company;
 import com.upc.saveup.user_microservice.model.Customer;
 import com.upc.saveup.user_microservice.repository.CompanyRepository;
 import com.upc.saveup.user_microservice.repository.CustomerRepository;
@@ -39,11 +40,12 @@ public class CustomerController {
         return new ResponseEntity<List<Customer>>(customerRepository.findAll(), HttpStatus.OK);
     }
 
+
     @CrossOrigin(origins = "http://localhost:4200")
     @Transactional(readOnly = true)
-    @GetMapping("/customers/{customerId}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable int customerId){
-        return new ResponseEntity<Customer>(customerService.getCustomer(customerId), HttpStatus.OK);
+    @GetMapping("/customers/{id}")
+    public ResponseEntity<Customer> getCustomerById(@PathVariable("id") int id){
+        return new ResponseEntity<Customer>(customerService.getCustomer(id), HttpStatus.OK);
     }
 
     //EndPoint: localhost:8080/api/saveup/v1/purchase/{customerId}/data
