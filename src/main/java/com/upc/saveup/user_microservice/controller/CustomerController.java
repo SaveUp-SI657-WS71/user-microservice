@@ -72,6 +72,19 @@ public class CustomerController {
         }
     }
 
+    @Transactional(readOnly = true)
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/customers/name/{name}/lastName/{lastName}/phoneNumber/{phoneNumber}")
+    public ResponseEntity<Customer> getCustomerByNameAndLastNameAndPhoneNumber(@PathVariable String name, @PathVariable String lastName, @PathVariable String phoneNumber) {
+
+        Customer customer = customerRepository.findByNameAndLastNameAndPhoneNumber(name, lastName, phoneNumber);
+        if (customer != null) {
+            return new ResponseEntity<>(customer, HttpStatus.OK);
+        } else {
+            return null;
+        }
+    }
+
     //EndPoint: localhost:8080/api/saveup/v1/customers/recover
     //Method: POST
     @Transactional(readOnly = true)
