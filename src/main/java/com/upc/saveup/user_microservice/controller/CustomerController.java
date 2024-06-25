@@ -74,7 +74,7 @@ public class CustomerController {
 
     @Transactional(readOnly = true)
     @CrossOrigin(origins = "http://localhost:4200")
-    @PostMapping("/customers/name/{name}/lastName/{lastName}/phoneNumber/{phoneNumber}")
+    @GetMapping("/customers/name/{name}/lastName/{lastName}/phoneNumber/{phoneNumber}")
     public ResponseEntity<Customer> getCustomerByNameAndLastNameAndPhoneNumber(@PathVariable String name, @PathVariable String lastName, @PathVariable String phoneNumber) {
 
         Customer customer = customerRepository.findByNameAndLastNameAndPhoneNumber(name, lastName, phoneNumber);
