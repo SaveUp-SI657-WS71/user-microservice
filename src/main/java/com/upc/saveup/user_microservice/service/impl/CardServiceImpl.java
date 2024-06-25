@@ -20,7 +20,7 @@ public class CardServiceImpl {
     }
 
     public List<CardDto> getCardsByCustomerId(int customerId) {
-        String url = "http://microservicio-de-pagos/cards/customer/" + customerId;
+        String url = "http://192.168.56.1:8084/api/saveup/v1/cards/customer/" + customerId;
         ResponseEntity<List<CardDto>> response = restTemplate.exchange(url, HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<CardDto>>() {});
         return response.getBody();
